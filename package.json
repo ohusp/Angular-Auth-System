@@ -1,5 +1,5 @@
 {
-  "name": "angular",
+  "name": "angular-authentication-system",
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
@@ -8,6 +8,10 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e"
+  },
+  "author": {
+    "name" : "Mr Mendes",
+    "email" : "mendes.paul28@gmail.com"
   },
   "private": true,
   "dependencies": {

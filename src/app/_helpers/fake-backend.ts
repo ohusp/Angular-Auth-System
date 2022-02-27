@@ -3,7 +3,7 @@ import { HttpRequest, HttpResponse, HttpHandler, HttpEvent, HttpInterceptor, HTT
 import { Observable, of, throwError } from 'rxjs';
 import { delay, mergeMap, materialize, dematerialize } from 'rxjs/operators';
 
-const users = [{ id: 1, email: 'mendes.paul28@gmail.com', password: '1234abcd5678', name: 'Mr Mendes', phoneNumber: '08165253939', passport: '' }];
+const users = [{ id: 1, username: 'mr-mendes', password: '12345678', firstName: 'Paul', lastName: 'Mendes' }];
 
 @Injectable()
 export class FakeBackendInterceptor implements HttpInterceptor {
@@ -32,15 +32,14 @@ export class FakeBackendInterceptor implements HttpInterceptor {
         // route functions
 
         function authenticate() {
-            const { email, password } = body;
-            const user = users.find(x => x.email === email && x.password === password);
-            if (!user) return error('Email or password is incorrect');
+            const { username, password } = body;
+            const user = users.find(x => x.username === username && x.password === password);
+            if (!user) return error('Username or password is incorrect');
             return ok({
                 id: user.id,
-                email: user.email,
-                name: user.name,
-                phoneNumber: user.phoneNumber,
-                passport: user.passport,
+                username: user.username,
+                firstName: user.firstName,
+                lastName: user.lastName,
                 token: 'fake-jwt-token'
             })
         }
